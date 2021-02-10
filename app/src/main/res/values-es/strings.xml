@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="introduce_tu_email">Introduce tu email</string>
+    <string name="recordar_usuario">¿Recordar usuario?</string>
+    <string name="login">Iniciar</string>
+</resources>

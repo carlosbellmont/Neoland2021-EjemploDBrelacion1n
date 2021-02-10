@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name" translatable="false">Neoland2021</string>
+    <string name="introduce_tu_email">Enter your email</string>
+    <string name="neoland" translatable="false">NEOLAND</string>
+    <string name="login">Login</string>
+    <string name="recordar_usuario">Remember me?</string>
+</resources>
