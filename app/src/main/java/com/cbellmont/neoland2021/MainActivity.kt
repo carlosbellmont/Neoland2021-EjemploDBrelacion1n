@@ -1,12 +1,12 @@
 package com.cbellmont.neoland2021
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
-import androidx.core.widget.addTextChangedListener
+import android.widget.Toast
 import com.cbellmont.neoland2021.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -18,6 +18,8 @@ class MainActivity : AppCompatActivity() {
         const val USER_NAME = "USER_NAME"
     }
 
+    // Usuario temporal hasta que tengamos una base de datos creada
+    val usuarioValido = RegisteredUser("carlos@neoland.com")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,9 +54,17 @@ class MainActivity : AppCompatActivity() {
             } else {
                 guardarPreferencias("")
             }
+            // Ya que no sabemos de bases de datos aún. Vamos a simular un login de esta manera.
+            if (binding.etLogin.text.toString().contentEquals(usuarioValido.email)) {
+                // Lanzamos la activity 2.
+                val intent = Intent(this, ProfileActivity::class.java)
+                intent.putExtra(ProfileActivity.VALUE_1, binding.etLogin.text.toString())
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, "El usuario no está en la Base de Datos", Toast.LENGTH_LONG).show()
+            }
+
         }
-
-
     }
 
     private fun cargarPreferencias() : String? {
