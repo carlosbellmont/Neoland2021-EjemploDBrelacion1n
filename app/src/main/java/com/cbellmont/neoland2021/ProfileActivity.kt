@@ -9,6 +9,7 @@ class ProfileActivity : AppCompatActivity() {
 
     lateinit var binding : ActivityProfileBinding
     private var adapter = StudentAdapter()
+    private var myself = Student("Yo", "", R.mipmap.myself)
 
     companion object {
         const val VALUE_1 = "VALOR_1"
@@ -20,6 +21,9 @@ class ProfileActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val email = intent.getStringExtra(VALUE_1)
+        email?.let {
+            myself.email = email
+        }
         createRecyclerView()
 
     }
@@ -30,6 +34,7 @@ class ProfileActivity : AppCompatActivity() {
         adapter.updateData(getStudentList())
     }
 
+
     private fun getStudentList() : List<Student> {
         val alumno1 = Student("Elena B", "e@b.com", R.mipmap.estudiante_femenina)
         val alumno2 = Student("Miguel A", "m@a.com", R.mipmap.estudiante)
@@ -37,7 +42,7 @@ class ProfileActivity : AppCompatActivity() {
         val alumno4 = Student("Sergi E", "s@e.com", R.mipmap.chico)
         val alumno5 = Student("Elena B", "e@b.com", R.mipmap.estudiante_chico)
 
-        return listOf(alumno1, alumno2, alumno3, alumno4,alumno5)
+        return listOf(myself, alumno1, alumno2, alumno3, alumno4,alumno5)
     }
 
 }

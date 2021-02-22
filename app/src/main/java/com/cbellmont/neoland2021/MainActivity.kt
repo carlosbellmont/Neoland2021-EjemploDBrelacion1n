@@ -75,6 +75,7 @@ class MainActivity : AppCompatActivity() {
         // var activity = ProfileActivity()
         val intent = Intent(this, ProfileActivity::class.java)
         intent.putExtra(ProfileActivity.VALUE_1, binding.etLogin.text.toString())
+
         startActivity(intent)
     }
 
