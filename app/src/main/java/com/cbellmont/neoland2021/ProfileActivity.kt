@@ -2,15 +2,16 @@ package com.cbellmont.neoland2021
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.cbellmont.neoland2021.databinding.ActivityProfileBinding
 
 class ProfileActivity : AppCompatActivity() {
 
     lateinit var binding : ActivityProfileBinding
+    private var adapter = StudentAdapter()
 
     companion object {
         const val VALUE_1 = "VALOR_1"
-        const val VALUE_2 = "VALOR_2"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,11 +19,25 @@ class ProfileActivity : AppCompatActivity() {
         binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val name = intent.getStringExtra(VALUE_1)
-        binding.tvName.text = name
+        val email = intent.getStringExtra(VALUE_1)
+        createRecyclerView()
 
-        val numeroRecibido = intent.getIntExtra(VALUE_2, -1)
-        binding.tvName.text = binding.tvName.text.toString() + numeroRecibido
+    }
+
+    private fun createRecyclerView() {
+        binding.recyclerView.layoutManager = LinearLayoutManager(this)
+        binding.recyclerView.adapter = adapter
+        adapter.updateData(getStudentList())
+    }
+
+    private fun getStudentList() : List<Student> {
+        val alumno1 = Student("Elena B", "e@b.com", R.mipmap.estudiante_femenina)
+        val alumno2 = Student("Miguel A", "m@a.com", R.mipmap.estudiante)
+        val alumno3 = Student("Belén C", "b@c.com", R.mipmap.estudiante_chica)
+        val alumno4 = Student("Sergi E", "s@e.com", R.mipmap.chico)
+        val alumno5 = Student("Elena B", "e@b.com", R.mipmap.estudiante_chico)
+
+        return listOf(alumno1, alumno2, alumno3, alumno4,alumno5)
     }
 
 }

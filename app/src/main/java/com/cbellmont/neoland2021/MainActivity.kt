@@ -68,14 +68,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun startProfileActivity(){
-        var user = RegisteredUser("aaaa")
+        val user = RegisteredUser("aaaa")
         user.email = "este otro email"
 
         // Esto estaríoa muy muy mal
         // var activity = ProfileActivity()
         val intent = Intent(this, ProfileActivity::class.java)
         intent.putExtra(ProfileActivity.VALUE_1, binding.etLogin.text.toString())
-        intent.putExtra(ProfileActivity.VALUE_2, Random.nextInt())
         startActivity(intent)
     }
 
