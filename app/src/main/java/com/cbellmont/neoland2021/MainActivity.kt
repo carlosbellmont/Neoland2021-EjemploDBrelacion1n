@@ -4,10 +4,12 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.telephony.ims.RegistrationManager
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Toast
 import com.cbellmont.neoland2021.databinding.ActivityMainBinding
+import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
 
@@ -57,14 +59,24 @@ class MainActivity : AppCompatActivity() {
             // Ya que no sabemos de bases de datos aún. Vamos a simular un login de esta manera.
             if (binding.etLogin.text.toString().contentEquals(usuarioValido.email)) {
                 // Lanzamos la activity 2.
-                val intent = Intent(this, ProfileActivity::class.java)
-                intent.putExtra(ProfileActivity.VALUE_1, binding.etLogin.text.toString())
-                startActivity(intent)
+                startProfileActivity()
             } else {
                 Toast.makeText(this, "El usuario no está en la Base de Datos", Toast.LENGTH_LONG).show()
             }
 
         }
+    }
+
+    private fun startProfileActivity(){
+        var user = RegisteredUser("aaaa")
+        user.email = "este otro email"
+
+        // Esto estaríoa muy muy mal
+        // var activity = ProfileActivity()
+        val intent = Intent(this, ProfileActivity::class.java)
+        intent.putExtra(ProfileActivity.VALUE_1, binding.etLogin.text.toString())
+        intent.putExtra(ProfileActivity.VALUE_2, Random.nextInt())
+        startActivity(intent)
     }
 
     private fun cargarPreferencias() : String? {
