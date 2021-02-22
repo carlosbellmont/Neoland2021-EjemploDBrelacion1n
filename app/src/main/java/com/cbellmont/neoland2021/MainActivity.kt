@@ -7,8 +7,12 @@ import android.os.Bundle
 import android.telephony.ims.RegistrationManager
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.View
 import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
 import com.cbellmont.neoland2021.databinding.ActivityMainBinding
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
