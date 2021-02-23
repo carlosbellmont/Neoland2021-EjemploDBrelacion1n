@@ -1,6 +1,7 @@
 package com.cbellmont.neoland2021
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -36,7 +37,10 @@ class ProfileActivity : AppCompatActivity() {
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         binding.recyclerView.adapter = adapter
         lifecycleScope.launch{
-            adapter.updateData(model.getAllUser())
+            binding.progressBar.visibility = View.VISIBLE
+            val users = model.getAllUser()
+            adapter.updateData(users)
+            binding.progressBar.visibility = View.GONE
         }
     }
 
