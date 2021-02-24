@@ -7,7 +7,7 @@ import com.cbellmont.neoland2021.databinding.ItemStudentBinding
 
 class StudentAdapter : RecyclerView.Adapter<StudentAdapter.StudentViewHolder>() {
 
-    private var studentList =  listOf<Student>()
+    private var studentList =  mutableListOf<Student>()
 
     class StudentViewHolder(val itemBinding: ItemStudentBinding) : RecyclerView.ViewHolder(itemBinding.root)
 
@@ -28,7 +28,12 @@ class StudentAdapter : RecyclerView.Adapter<StudentAdapter.StudentViewHolder>() 
     }
 
     fun updateData(studentList : List<Student>){
-        this.studentList = studentList
+        this.studentList = studentList.toMutableList()
+        notifyDataSetChanged()
+    }
+
+    fun updateData(student : Student){
+        this.studentList.add(student)
         notifyDataSetChanged()
     }
 }

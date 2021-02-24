@@ -36,6 +36,12 @@ class ProfileActivity : AppCompatActivity() {
     private fun createRecyclerView() {
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         binding.recyclerView.adapter = adapter
+        updateUserStepByStep()
+    }
+
+
+    // Esta función devuelve todos los elementos a la vez
+    private fun updateAllUSerAtOnce(){
         lifecycleScope.launch{
             binding.progressBar.visibility = View.VISIBLE
             val users = model.getAllUser()
@@ -44,6 +50,17 @@ class ProfileActivity : AppCompatActivity() {
         }
     }
 
+    // Esta función devuelve los elementos de uno en uno
+    private fun updateUserStepByStep(){
+        lifecycleScope.launch{
+            binding.progressBar.visibility = View.VISIBLE
+            for (i in 0 until model.numberOfUser()){
+                val user = model.getUser(i)
+                adapter.updateData(user)
+            }
+            binding.progressBar.visibility = View.GONE
+        }
+    }
 
 
 }
