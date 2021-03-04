@@ -6,7 +6,7 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
 
-class RegisteredUserViewModel(application: Application) : AndroidViewModel(application) {
+class ProfileActivityViewModel(application: Application) : AndroidViewModel(application) {
 
     private var myself = Student("Yo", "", R.mipmap.myself)
     private val lista = listOf(myself,

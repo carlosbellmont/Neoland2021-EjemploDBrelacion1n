@@ -13,7 +13,7 @@ class ProfileActivity : AppCompatActivity() {
 
     lateinit var binding : ActivityProfileBinding
     private var adapter = StudentAdapter()
-    private lateinit var model :RegisteredUserViewModel
+    private lateinit var model :ProfileActivityViewModel
 
     companion object {
         const val VALUE_1 = "VALOR_1"
@@ -23,7 +23,7 @@ class ProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        model = ViewModelProvider(this).get(RegisteredUserViewModel::class.java)
+        model = ViewModelProvider(this).get(ProfileActivityViewModel::class.java)
 
         val email = intent.getStringExtra(VALUE_1)
         email?.let {
