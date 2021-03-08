@@ -1,22 +1,16 @@
-package com.cbellmont.neoland2021
+package com.cbellmont.neoland2021.main
 
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.telephony.ims.RegistrationManager
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import com.cbellmont.neoland2021.profile.StudentsActivity
 import com.cbellmont.neoland2021.databinding.ActivityMainBinding
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
 
@@ -72,15 +66,12 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this@MainActivity, "El usuario no está en la Base de Datos", Toast.LENGTH_LONG).show()
                 }
             }
-
-
         }
     }
 
     private fun startProfileActivity() {
-        val intent = Intent(this, ProfileActivity::class.java)
-        intent.putExtra(ProfileActivity.VALUE_1, binding.etLogin.text.toString())
-
+        val intent = Intent(this, StudentsActivity::class.java)
+        intent.putExtra(StudentsActivity.VALUE_1, binding.etLogin.text.toString())
         startActivity(intent)
     }
 

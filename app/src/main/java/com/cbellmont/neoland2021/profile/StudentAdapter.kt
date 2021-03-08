@@ -1,13 +1,14 @@
-package com.cbellmont.neoland2021
+package com.cbellmont.neoland2021.profile
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.cbellmont.neoland2021.databinding.ItemStudentBinding
+import com.cbellmont.neoland2021.model.entity.Student
 
 class StudentAdapter : RecyclerView.Adapter<StudentAdapter.StudentViewHolder>() {
 
-    private var studentList =  mutableListOf<Student>()
+    private var studentList =  listOf<Student>()
 
     class StudentViewHolder(val itemBinding: ItemStudentBinding) : RecyclerView.ViewHolder(itemBinding.root)
 
@@ -28,12 +29,8 @@ class StudentAdapter : RecyclerView.Adapter<StudentAdapter.StudentViewHolder>() 
     }
 
     fun updateData(studentList : List<Student>){
-        this.studentList = studentList.toMutableList()
+        this.studentList = studentList
         notifyDataSetChanged()
     }
 
-    fun updateData(student : Student){
-        this.studentList.add(student)
-        notifyDataSetChanged()
-    }
 }

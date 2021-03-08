@@ -1,12 +1,7 @@
 package com.cbellmont.neoland2021
 
 import android.app.Application
-import android.content.Context
-import android.content.SharedPreferences
-import androidx.room.Room
-import androidx.room.RoomDatabase
-import androidx.sqlite.db.SupportSQLiteDatabase
-import kotlinx.coroutines.*
+import com.cbellmont.neoland2021.db.Db
 
 
 class App : Application() {

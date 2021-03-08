@@ -1,19 +1,27 @@
-package com.cbellmont.neoland2021
+package com.cbellmont.neoland2021.db
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
+import com.cbellmont.neoland2021.R
+import com.cbellmont.neoland2021.model.dao.DbStatusDao
+import com.cbellmont.neoland2021.model.dao.RegisteredUserDao
+import com.cbellmont.neoland2021.model.dao.StudentDao
+import com.cbellmont.neoland2021.model.entity.DbStatus
+import com.cbellmont.neoland2021.model.entity.RegisteredUser
+import com.cbellmont.neoland2021.model.entity.Student
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-@Database(entities = [RegisteredUser::class], version = 1)
+@Database(entities = [RegisteredUser::class, Student::class, DbStatus::class], version = 1)
 abstract class Db : RoomDatabase() {
 
-    abstract fun registredUserDao(): RegisteredUserDao
+    abstract fun registeredUserDao(): RegisteredUserDao
+    abstract fun studentDao(): StudentDao
+    abstract fun dbStatusDao(): DbStatusDao
 
     companion object {
 
@@ -37,7 +45,14 @@ abstract class Db : RoomDatabase() {
             return object : RoomDatabase.Callback() {
                 override fun onCreate(db: SupportSQLiteDatabase) {
                     CoroutineScope(Dispatchers.IO).launch {
-                        INSTANCE?.registredUserDao()?.insert(RegisteredUser("carlos@neoland.com"))
+                        INSTANCE?.registeredUserDao()?.insert(RegisteredUser("carlos@neoland.com"))
+                        INSTANCE?.studentDao()?.insert(Student("Carlos1", "carlos@neoland.com", R.mipmap.myself))
+                        INSTANCE?.studentDao()?.insert(Student("Carlos2", "carlos@neoland.com", R.mipmap.myself))
+                        INSTANCE?.studentDao()?.insert(Student("Carlos3", "carlos@neoland.com", R.mipmap.myself))
+                        INSTANCE?.studentDao()?.insert(Student("Carlos4", "carlos@neoland.com", R.mipmap.myself))
+
+
+                        INSTANCE?.dbStatusDao()?.insert(DbStatus(0, true))
                     }
                 }
 
