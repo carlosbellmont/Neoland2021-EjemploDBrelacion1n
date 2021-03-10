@@ -1,5 +1,7 @@
-package com.cbellmont.neoland2021.profile
+package com.cbellmont.neoland2021.students
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -19,7 +21,9 @@ class StudentAdapter : RecyclerView.Adapter<StudentAdapter.StudentViewHolder>() 
 
     override fun onBindViewHolder(holder: StudentViewHolder, position: Int) {
         val student = studentList[position]
-        holder.itemBinding.ivPhoto.setImageResource(student.photo)
+        student.photoId?.let { holder.itemBinding.ivPhoto.setImageResource(it) }
+        student.image?.let { holder.itemBinding.ivPhoto.setImageBitmap(BitmapFactory.decodeByteArray(it, 0, it.size)) }
+
         holder.itemBinding.tvEmail.text = student.email
         holder.itemBinding.tvName.text = student.name
     }

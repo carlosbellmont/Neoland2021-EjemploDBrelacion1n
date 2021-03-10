@@ -4,4 +4,7 @@
     <string name="neoland" translatable="false">NEOLAND</string>
     <string name="login">Login</string>
     <string name="recordar_usuario">Remember me?</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="introduce_tu_nombre">Introduce tu nombre</string>
 </resources>

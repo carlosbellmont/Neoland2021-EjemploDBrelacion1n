@@ -8,7 +8,7 @@ import android.text.TextWatcher
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import com.cbellmont.neoland2021.profile.StudentsActivity
+import com.cbellmont.neoland2021.students.StudentsActivity
 import com.cbellmont.neoland2021.databinding.ActivityMainBinding
 import kotlinx.coroutines.launch
 

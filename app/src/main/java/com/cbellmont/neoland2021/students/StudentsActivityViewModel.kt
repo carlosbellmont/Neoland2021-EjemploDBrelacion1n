@@ -1,4 +1,4 @@
-package com.cbellmont.neoland2021.profile
+package com.cbellmont.neoland2021.students
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

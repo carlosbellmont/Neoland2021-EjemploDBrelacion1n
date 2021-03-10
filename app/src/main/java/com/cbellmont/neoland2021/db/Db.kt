@@ -16,7 +16,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-@Database(entities = [RegisteredUser::class, Student::class, DbStatus::class], version = 1)
+@Database(entities = [RegisteredUser::class, Student::class, DbStatus::class], version = 2)
 abstract class Db : RoomDatabase() {
 
     abstract fun registeredUserDao(): RegisteredUserDao
@@ -46,6 +46,7 @@ abstract class Db : RoomDatabase() {
                 override fun onCreate(db: SupportSQLiteDatabase) {
                     CoroutineScope(Dispatchers.IO).launch {
                         INSTANCE?.registeredUserDao()?.insert(RegisteredUser("carlos@neoland.com"))
+
                         INSTANCE?.studentDao()?.insert(Student("Carlos1", "carlos@neoland.com", R.mipmap.myself))
                         INSTANCE?.studentDao()?.insert(Student("Carlos2", "carlos@neoland.com", R.mipmap.myself))
                         INSTANCE?.studentDao()?.insert(Student("Carlos3", "carlos@neoland.com", R.mipmap.myself))
