@@ -20,6 +20,9 @@ interface StudentDao {
     @Insert
     fun insert(student: Student)
 
+    @Insert
+    fun insert(student: List<Student>)
+
     @Delete
     fun delete(student: Student)
 }

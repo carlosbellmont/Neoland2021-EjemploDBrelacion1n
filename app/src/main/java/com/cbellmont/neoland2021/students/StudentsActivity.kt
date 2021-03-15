@@ -12,7 +12,7 @@ import com.cbellmont.neoland2021.student.StudentActivity
 
 class StudentsActivity : AppCompatActivity() {
 
-    lateinit var binding : ActivityStudentsBinding
+    private lateinit var binding : ActivityStudentsBinding
     private var adapter = StudentAdapter()
     private lateinit var model : StudentsActivityViewModel
 
@@ -32,7 +32,13 @@ class StudentsActivity : AppCompatActivity() {
 
         model.userList.observe(this){
             updateStudent(it)
-            binding.progressBar.visibility = View.GONE
+            binding.pbLoading.visibility = View.GONE
+        }
+        model.status.observe(this) {
+            when (it) {
+                StudentsActivityViewModel.DownloadStatus.STARTED -> binding.pbLoading.visibility = View.VISIBLE
+                StudentsActivityViewModel.DownloadStatus.FINISHED -> binding.pbLoading.visibility = View.GONE
+            }
         }
 
         binding.fbAdd.setOnClickListener {
@@ -40,7 +46,11 @@ class StudentsActivity : AppCompatActivity() {
             startActivity(i)
         }
 
-        binding.progressBar.visibility = View.VISIBLE
+        binding.fbDownload.setOnClickListener {
+            model.downloadUser()
+        }
+
+        binding.pbLoading.visibility = View.VISIBLE
     }
 
     override fun onResume() {
