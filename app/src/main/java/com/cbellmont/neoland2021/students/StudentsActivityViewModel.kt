@@ -46,4 +46,11 @@ class StudentsActivityViewModel(application: Application) : AndroidViewModel(app
         userList.value = studentList
     }
 
+    fun deleteStudent(student: Student) {
+        viewModelScope.launch(Dispatchers.IO) {
+            Db.getDatabase(getApplication()).studentDao().delete(student)
+            changeUserListValueOnUi(Db.getDatabase(getApplication()).studentDao().getAll())
+        }
+    }
+
 }

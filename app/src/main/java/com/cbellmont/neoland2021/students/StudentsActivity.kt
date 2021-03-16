@@ -10,10 +10,10 @@ import com.cbellmont.neoland2021.databinding.ActivityStudentsBinding
 import com.cbellmont.neoland2021.model.entity.Student
 import com.cbellmont.neoland2021.student.StudentActivity
 
-class StudentsActivity : AppCompatActivity() {
+class StudentsActivity : AppCompatActivity(), StudentAdapterInterface {
 
     private lateinit var binding : ActivityStudentsBinding
-    private var adapter = StudentAdapter()
+    private var adapter = StudentAdapter(this)
     private lateinit var model : StudentsActivityViewModel
 
     companion object {
@@ -29,6 +29,7 @@ class StudentsActivity : AppCompatActivity() {
         val email = intent.getStringExtra(VALUE_1)
 
         createRecyclerView()
+
 
         model.userList.observe(this){
             updateStudent(it)
@@ -66,6 +67,10 @@ class StudentsActivity : AppCompatActivity() {
     // Esta función devuelve todos los elementos a la vez
     private fun updateStudent(students : List<Student>){
         adapter.updateData(students)
+    }
+
+    override fun onItemClick(student : Student) {
+        model.deleteStudent(student)
     }
 
 }

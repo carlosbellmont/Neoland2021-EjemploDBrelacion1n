@@ -38,7 +38,7 @@ data class StudentModel(
     }
 
     fun toStudent() : Student {
-        return Student(name.name + " " + name.surname, email, null)
+        return Student(name.name + " " + name.surname, email, null, imageUrl = picture.large)
     }
 }
 

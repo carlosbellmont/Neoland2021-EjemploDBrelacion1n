@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 
 
 @Entity
-data class Student(val name: String, var email: String, val photoId: Int?,  @ColumnInfo(typeAffinity = ColumnInfo.BLOB) var image: ByteArray? = null){
+data class Student(val name: String, var email: String, val photoId: Int?,  @ColumnInfo(typeAffinity = ColumnInfo.BLOB) var image: ByteArray? = null, var imageUrl : String? = null){
     @PrimaryKey(autoGenerate = true)
     var id : Int = 0
 

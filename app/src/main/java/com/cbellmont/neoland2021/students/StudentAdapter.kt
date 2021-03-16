@@ -1,14 +1,21 @@
 package com.cbellmont.neoland2021.students
 
-import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.cbellmont.neoland2021.databinding.ItemStudentBinding
 import com.cbellmont.neoland2021.model.entity.Student
+import com.squareup.picasso.Picasso
 
-class StudentAdapter : RecyclerView.Adapter<StudentAdapter.StudentViewHolder>() {
+
+interface StudentAdapterInterface {
+    fun onItemClick(student : Student)
+}
+
+class StudentAdapter(val listener : StudentAdapterInterface): RecyclerView.Adapter<StudentAdapter.StudentViewHolder>() {
+
+
 
     private var studentList =  listOf<Student>()
 
@@ -23,9 +30,14 @@ class StudentAdapter : RecyclerView.Adapter<StudentAdapter.StudentViewHolder>() 
         val student = studentList[position]
         student.photoId?.let { holder.itemBinding.ivPhoto.setImageResource(it) }
         student.image?.let { holder.itemBinding.ivPhoto.setImageBitmap(BitmapFactory.decodeByteArray(it, 0, it.size)) }
+        student.imageUrl?.let { Picasso.get().load(it).into(holder.itemBinding.ivPhoto) }
 
         holder.itemBinding.tvEmail.text = student.email
         holder.itemBinding.tvName.text = student.name
+
+        holder.itemBinding.root.setOnClickListener {
+            listener.onItemClick(student)
+        }
     }
 
     override fun getItemCount(): Int {
