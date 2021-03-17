@@ -1,4 +1,4 @@
-package com.cbellmont.neoland2021.students
+package com.cbellmont.neoland2021.studentsfragment
 
 import android.graphics.BitmapFactory
 import android.view.LayoutInflater
@@ -13,7 +13,7 @@ interface StudentAdapterInterface {
     fun onItemClick(student : Student)
 }
 
-class StudentAdapter(val listener : StudentAdapterInterface): RecyclerView.Adapter<StudentAdapter.StudentViewHolder>() {
+class StudentAdapter(private val listener : StudentAdapterInterface): RecyclerView.Adapter<StudentAdapter.StudentViewHolder>() {
 
 
 

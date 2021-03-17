@@ -1,4 +1,4 @@
-package com.cbellmont.neoland2021.students
+package com.cbellmont.neoland2021.studentsfragment
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -7,12 +7,11 @@ import androidx.lifecycle.viewModelScope
 import com.cbellmont.neoland2021.db.Db
 import com.cbellmont.neoland2021.model.entity.Student
 import com.cbellmont.neoland2021.request.GetAllUsers
-import com.cbellmont.neoland2021.request.model.StudentModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class StudentsActivityViewModel(application: Application) : AndroidViewModel(application) {
+class StudentsFragmentViewModel(application: Application) : AndroidViewModel(application) {
 
 
 

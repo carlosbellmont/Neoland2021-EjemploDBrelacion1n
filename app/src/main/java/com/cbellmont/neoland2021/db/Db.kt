@@ -47,10 +47,10 @@ abstract class Db : RoomDatabase() {
                     CoroutineScope(Dispatchers.IO).launch {
                         INSTANCE?.registeredUserDao()?.insert(RegisteredUser("carlos@neoland.com"))
 
-                        INSTANCE?.studentDao()?.insert(Student("Carlos1", "carlos@neoland.com", R.mipmap.myself))
-                        INSTANCE?.studentDao()?.insert(Student("Carlos2", "carlos@neoland.com", R.mipmap.myself))
-                        INSTANCE?.studentDao()?.insert(Student("Carlos3", "carlos@neoland.com", R.mipmap.myself))
-                        INSTANCE?.studentDao()?.insert(Student("Carlos4", "carlos@neoland.com", R.mipmap.myself))
+                        INSTANCE?.studentDao()?.insert(Student("Carlos", "carlos@neoland.com", photoId = R.mipmap.myself))
+                        INSTANCE?.studentDao()?.insert(Student("Belén", "carlos@neoland.com", photoId = R.mipmap.estudiante_chica))
+                        INSTANCE?.studentDao()?.insert(Student("Elena", "carlos@neoland.com", photoId = R.mipmap.estudiante_femenina))
+                        INSTANCE?.studentDao()?.insert(Student("Sergi", "carlos@neoland.com", photoId = R.mipmap.estudiante_chico))
 
 
                         INSTANCE?.dbStatusDao()?.insert(DbStatus(0, true))

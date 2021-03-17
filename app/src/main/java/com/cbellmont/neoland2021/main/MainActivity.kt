@@ -8,8 +8,9 @@ import android.text.TextWatcher
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import com.cbellmont.neoland2021.students.StudentsActivity
+import com.cbellmont.neoland2021.studentsfragment.StudentsFragment
 import com.cbellmont.neoland2021.databinding.ActivityMainBinding
+import com.cbellmont.neoland2021.home.HomeActivity
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
@@ -61,18 +62,12 @@ class MainActivity : AppCompatActivity() {
             lifecycleScope.launch {
                 if (model.verifyUser(binding.etLogin.text.toString())) {
                     // Lanzamos la activity 2.
-                    startProfileActivity()
+                    HomeActivity.create(this@MainActivity)
                 } else {
                     Toast.makeText(this@MainActivity, "El usuario no está en la Base de Datos", Toast.LENGTH_LONG).show()
                 }
             }
         }
-    }
-
-    private fun startProfileActivity() {
-        val intent = Intent(this, StudentsActivity::class.java)
-        intent.putExtra(StudentsActivity.VALUE_1, binding.etLogin.text.toString())
-        startActivity(intent)
     }
 
 

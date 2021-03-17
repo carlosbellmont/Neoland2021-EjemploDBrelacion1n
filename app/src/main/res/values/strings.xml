@@ -7,4 +7,6 @@
     <string name="name">Name</string>
     <string name="email">Email</string>
     <string name="introduce_tu_nombre">Introduce tu nombre</string>
+    <string name="students">Students</string>
+    <string name="campus">Campus</string>
 </resources>
