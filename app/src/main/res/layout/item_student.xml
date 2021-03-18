@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/iv_photo"
         android:layout_width="100dp"
         android:layout_height="100dp"
@@ -15,6 +15,8 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@mipmap/estudiante"
         android:layout_margin="16dp"
+        app:civ_border_width="2dp"
+        app:civ_border_color="@color/colorRojoNeoland"
         />
 
     <LinearLayout
