@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.cbellmont.neoland2021.R
+import com.cbellmont.neoland2021.campusfragment.CampusFragment
 import com.cbellmont.neoland2021.databinding.ActivityHomeBinding
 import com.cbellmont.neoland2021.studentsfragment.StudentsFragment
 
@@ -26,6 +27,7 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        changeFragment(StudentsFragment())
 
         binding.bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
@@ -36,6 +38,7 @@ class HomeActivity : AppCompatActivity() {
                 }
                 R.id.menu_2 -> {
                     Log.d(HomeActivity::class.java.name, "Botón 2")
+                    changeFragment(CampusFragment())
                     Toast.makeText(this, "Menu 2", Toast.LENGTH_LONG).show()
                 }
                 else -> {

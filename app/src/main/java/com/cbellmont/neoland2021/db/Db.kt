@@ -6,9 +6,11 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.cbellmont.neoland2021.R
+import com.cbellmont.neoland2021.model.dao.CampusDao
 import com.cbellmont.neoland2021.model.dao.DbStatusDao
 import com.cbellmont.neoland2021.model.dao.RegisteredUserDao
 import com.cbellmont.neoland2021.model.dao.StudentDao
+import com.cbellmont.neoland2021.model.entity.Campus
 import com.cbellmont.neoland2021.model.entity.DbStatus
 import com.cbellmont.neoland2021.model.entity.RegisteredUser
 import com.cbellmont.neoland2021.model.entity.Student
@@ -16,12 +18,13 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-@Database(entities = [RegisteredUser::class, Student::class, DbStatus::class], version = 2)
+@Database(entities = [RegisteredUser::class, Student::class, DbStatus::class, Campus::class], version = 2)
 abstract class Db : RoomDatabase() {
 
     abstract fun registeredUserDao(): RegisteredUserDao
     abstract fun studentDao(): StudentDao
     abstract fun dbStatusDao(): DbStatusDao
+    abstract fun campusDao(): CampusDao
 
     companion object {
 
@@ -52,6 +55,9 @@ abstract class Db : RoomDatabase() {
                         INSTANCE?.studentDao()?.insert(Student("Elena", "carlos@neoland.com", photoId = R.mipmap.estudiante_femenina))
                         INSTANCE?.studentDao()?.insert(Student("Sergi", "carlos@neoland.com", photoId = R.mipmap.estudiante_chico))
 
+                        INSTANCE?.campusDao()?.insert(Campus("Madrid", R.mipmap.madrid))
+                        INSTANCE?.campusDao()?.insert(Campus("Barcelona", R.mipmap.barcelona))
+                        INSTANCE?.campusDao()?.insert(Campus("Valencia", R.mipmap.valencia))
 
                         INSTANCE?.dbStatusDao()?.insert(DbStatus(0, true))
                     }

@@ -10,13 +10,13 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.cbellmont.neoland2021.databinding.ActivityStudentsBinding
+import com.cbellmont.neoland2021.databinding.FragmentStudentsBinding
 import com.cbellmont.neoland2021.model.entity.Student
 import com.cbellmont.neoland2021.student.StudentActivity
 
 class StudentsFragment : Fragment(), StudentAdapterInterface {
 
-    private lateinit var binding : ActivityStudentsBinding
+    private lateinit var binding : FragmentStudentsBinding
     private var adapter = StudentAdapter(this)
     private lateinit var model : StudentsFragmentViewModel
 
@@ -26,7 +26,7 @@ class StudentsFragment : Fragment(), StudentAdapterInterface {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = ActivityStudentsBinding.inflate(inflater, container, false)
+        binding = FragmentStudentsBinding.inflate(inflater, container, false)
         return binding.root
     }
 

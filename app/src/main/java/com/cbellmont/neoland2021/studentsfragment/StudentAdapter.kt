@@ -15,8 +15,6 @@ interface StudentAdapterInterface {
 
 class StudentAdapter(private val listener : StudentAdapterInterface): RecyclerView.Adapter<StudentAdapter.StudentViewHolder>() {
 
-
-
     private var studentList =  listOf<Student>()
 
     class StudentViewHolder(val itemBinding: ItemStudentBinding) : RecyclerView.ViewHolder(itemBinding.root)
