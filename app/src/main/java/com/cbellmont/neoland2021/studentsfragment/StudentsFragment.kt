@@ -38,6 +38,7 @@ class StudentsFragment : Fragment(), StudentAdapterInterface {
         model.userList.observe(viewLifecycleOwner){ students ->
             updateStudent(students)
             binding.pbLoading.visibility = View.GONE
+            binding.srlStudents.isRefreshing = false
         }
 
         model.status.observe(viewLifecycleOwner) {
@@ -52,7 +53,7 @@ class StudentsFragment : Fragment(), StudentAdapterInterface {
             startActivity(i)
         }
 
-        binding.fbDownload.setOnClickListener {
+        binding.srlStudents.setOnRefreshListener {
             model.downloadUser()
         }
 
