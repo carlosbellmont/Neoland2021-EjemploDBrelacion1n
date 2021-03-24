@@ -80,7 +80,7 @@ class StudentsFragment : Fragment(), StudentAdapterInterface {
         builder.setMessage("¿Seguro que quieres borrar?")
                 .setPositiveButton("Sí") { dialog, id ->
                     model.deleteStudent(student)
-                    Toast.makeText(binding.root.context, "${student.name} ha sido eliminado", Toast.LENGTH_LONG).show()
+                    Toast.makeText(binding.root.context, "${student.studentName} ha sido eliminado", Toast.LENGTH_LONG).show()
                 }
                 .setNegativeButton("No") { dialog, id ->
                     Toast.makeText(binding.root.context, "No se ha borrado a nadie", Toast.LENGTH_LONG).show()

@@ -19,9 +19,9 @@ class CampusAdapter: RecyclerView.Adapter<CampusAdapter.CampusViewHolder>() {
 
     override fun onBindViewHolder(holder: CampusViewHolder, position: Int) {
         val campus = campusList[position]
-        holder.itemBinding.ivPhoto.setImageResource(campus.photoId)
+        holder.itemBinding.ivPhoto.setImageResource(campus.campusPhotoId)
 
-        holder.itemBinding.tvName.text = campus.name
+        holder.itemBinding.tvName.text = campus.campusName
 
     }
 

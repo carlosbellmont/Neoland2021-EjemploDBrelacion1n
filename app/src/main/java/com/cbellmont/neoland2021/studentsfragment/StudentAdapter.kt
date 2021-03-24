@@ -26,12 +26,12 @@ class StudentAdapter(private val listener : StudentAdapterInterface): RecyclerVi
 
     override fun onBindViewHolder(holder: StudentViewHolder, position: Int) {
         val student = studentList[position]
-        student.photoId?.let { holder.itemBinding.ivPhoto.setImageResource(it) }
+        student.studentPhotoId?.let { holder.itemBinding.ivPhoto.setImageResource(it) }
         student.image?.let { holder.itemBinding.ivPhoto.setImageBitmap(BitmapFactory.decodeByteArray(it, 0, it.size)) }
         student.imageUrl?.let { Picasso.get().load(it).into(holder.itemBinding.ivPhoto) }
 
         holder.itemBinding.tvEmail.text = student.email
-        holder.itemBinding.tvName.text = student.name
+        holder.itemBinding.tvName.text = student.studentName
 
         holder.itemBinding.root.setOnClickListener {
             listener.onItemClick(student)
